@@ -52,6 +52,23 @@ var todoFunctions = {
       // in the new todo array, all elements will remain unchanged except the one with id: idToMark
       // this element will have its done value toggled
       // hint: array.map
+      var todos2=todoFunctions.cloneArrayOfObjects(todos);
+      // for ( i = 0; i <  todos2.length; i++) {
+      //   if (todos2[i].id===idToMark) {
+      //     todos2[i].done = true;
+      //
+      //   }}
+      var newObject = todos2.map(function (key){
+          if(key.id == idToMark){
+
+            key.done = true;
+          }
+
+          return key ;
+});
+return newObject;
+
+
     },
     sortTodos: function(todos, sortFunction) {
       // stretch goal! Do this last
@@ -110,11 +127,16 @@ function compareValues(key, order='asc') {
 
     },
   };
+<<<<<<< HEAD
+
+
+=======
   //
   // var todos = ['make smoothie '];
   // var newTodo = { description: 'make smoothie out of things that should really be cooked' };
   // var updatedTodos = todoFunctions.addTodo(todos, newTodo);
   // console.log(updatedTodos)
+>>>>>>> b337b5093cea2cfb6d4188f72bf1180718f2d2da
   // Why is this if statement necessary?
   // The answer has something to do with needing to run code both in the browser and in Node.js
   // See this article for more details:
