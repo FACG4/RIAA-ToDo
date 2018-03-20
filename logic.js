@@ -46,6 +46,13 @@ var todoFunctions = {
       // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
       // return a new array, this should not contain any todo with an id of idToDelete
       // hint: array.filter
+      var copy_arr = todoFunctions.cloneArrayOfObjects(todos);
+      // return copy_arr.filter(function(item){
+      //   return item.id != idToDelete;
+      // })
+
+
+      return copy_arr.filter((item,i) => item.id != idToDelete);
     },
     markTodo: function(todos, idToMark) {
       // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
@@ -76,7 +83,7 @@ return newObject;
       // sortFunction will have same signature as the sort function in array.sort
       // hint: array.slice, array.sort
       console.log('assssssd');
-      
+
       var todos=[
         {
           id: 0,
@@ -103,12 +110,12 @@ function compareValues(key, order='asc') {
   return function(a, b) {
     if(!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
       // property doesn't exist on either object
-        return 0; 
+        return 0;
     }
 
-    const varA = (typeof a[key] === 'string') ? 
+    const varA = (typeof a[key] === 'string') ?
       a[key].toUpperCase() : a[key];
-    const varB = (typeof b[key] === 'string') ? 
+    const varB = (typeof b[key] === 'string') ?
       b[key].toUpperCase() : b[key];
 
     let comparison = 0;
@@ -122,21 +129,21 @@ function compareValues(key, order='asc') {
     );
   };
 }
-      CloneArray.sort(compareValues('sortId','desc')); 
+      CloneArray.sort(compareValues('sortId','desc'));
       return CloneArray;
 
     },
+    editTodo: function(todos, idToEdit, newDescription) {
+      // we are going to add something veruy cool an nice and great
+      var copy_arr = todoFunctions.cloneArrayOfObjects(todos);
+      for (let item of copy_arr) {
+        if (item.id === idToEdit) {
+          item.description = newDescription;
+        }
+      }
+      return copy_arr;
+    }
   };
-<<<<<<< HEAD
-
-
-=======
-  //
-  // var todos = ['make smoothie '];
-  // var newTodo = { description: 'make smoothie out of things that should really be cooked' };
-  // var updatedTodos = todoFunctions.addTodo(todos, newTodo);
-  // console.log(updatedTodos)
->>>>>>> b337b5093cea2cfb6d4188f72bf1180718f2d2da
   // Why is this if statement necessary?
   // The answer has something to do with needing to run code both in the browser and in Node.js
   // See this article for more details:

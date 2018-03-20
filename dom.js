@@ -40,7 +40,7 @@
         // https://developer.mozilla.org/en-US/docs/Web/Events/submit
         // what does event.preventDefault do?
         // what is inside event.target?
-    
+
         var description = '?'; // event.target ....
 
         // hint: todoFunctions.addTodo
