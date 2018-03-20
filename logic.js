@@ -2,6 +2,8 @@
 // you can access these on todo.todoFunctions
 // For part one we expect you to use tdd
 
+
+
 var todoFunctions = {
     // todoFunctions.generateId() will give you a unique id
     // You do not need to understand the implementation of this function.
@@ -28,6 +30,17 @@ var todoFunctions = {
       // returns a new array, it should contain todos with the newTodo added to the end.
       // add an id to the newTodo. You can use the generateId function to create an id.
       // hint: array.concat
+      if(newTodo.description.trim().length > 0)
+      {
+
+      var arr =  JSON.parse(JSON.stringify(todos));
+      var obj = {id : todoFunctions.generateId(),
+                description:newTodo.description,
+                done: false,
+                sortId: 0}
+      arr.push(obj);
+    }
+      return arr;
     },
     deleteTodo: function(todos, idToDelete) {
       // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
@@ -62,10 +75,68 @@ return newObject;
       // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
       // sortFunction will have same signature as the sort function in array.sort
       // hint: array.slice, array.sort
+      console.log('assssssd');
+      
+      var todos=[
+        {
+          id: 0,
+          description: 'smash avocados',
+          done: true,
+          sortId :0,
+        },
+        {
+          id: 1,
+          description: 'make coffee',
+          done: false,
+          sortId :1,
+        },
+        {
+          id: 2,
+          description: 'smash avocados',
+          done: true,
+          sortId :0,
+        },
+      ];
+      const CloneArray=todoFunctions.cloneArrayOfObjects(todos);
+      // function for dynamic sorting
+function compareValues(key, order='asc') {
+  return function(a, b) {
+    if(!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+      // property doesn't exist on either object
+        return 0; 
+    }
+
+    const varA = (typeof a[key] === 'string') ? 
+      a[key].toUpperCase() : a[key];
+    const varB = (typeof b[key] === 'string') ? 
+      b[key].toUpperCase() : b[key];
+
+    let comparison = 0;
+    if (varA > varB) {
+      comparison = 1;
+    } else if (varA < varB) {
+      comparison = -1;
+    }
+    return (
+      (order == 'desc') ? (comparison * -1) : comparison
+    );
+  };
+}
+      CloneArray.sort(compareValues('sortId','desc')); 
+      return CloneArray;
+
     },
   };
+<<<<<<< HEAD
 
 
+=======
+  //
+  // var todos = ['make smoothie '];
+  // var newTodo = { description: 'make smoothie out of things that should really be cooked' };
+  // var updatedTodos = todoFunctions.addTodo(todos, newTodo);
+  // console.log(updatedTodos)
+>>>>>>> b337b5093cea2cfb6d4188f72bf1180718f2d2da
   // Why is this if statement necessary?
   // The answer has something to do with needing to run code both in the browser and in Node.js
   // See this article for more details:

@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "RIAA-ToDo",
+=======
+  "name": "riaa-todo",
+>>>>>>> b337b5093cea2cfb6d4188f72bf1180718f2d2da
   "version": "1.0.0",
   "description": "",
   "main": "dom.js",
@@ -10,7 +14,10 @@
     "type": "git",
     "url": "git+https://github.com/FACG4/RIAA-ToDo.git"
   },
+<<<<<<< HEAD
   "keywords": [],
+=======
+>>>>>>> b337b5093cea2cfb6d4188f72bf1180718f2d2da
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -20,6 +27,11 @@
   "devDependencies": {
     "tap-spec": "^4.1.1",
     "tape": "^4.9.0"
+<<<<<<< HEAD
   },
   "dependencies": {}
+=======
+  }
+
+>>>>>>> b337b5093cea2cfb6d4188f72bf1180718f2d2da
 }
