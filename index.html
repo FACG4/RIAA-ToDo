@@ -14,7 +14,22 @@
       <input type="text" name="description" value="">
       <input type="submit" name="" value="Submit">
     </form>
+
+    <h2>JavaScript HTML DOM!</h2>
+
+<p>Hello World!</p>
+
+<p>Hello Norway!</p>
+
+<p id="demo"></p>
+
   </body>
   <script type="text/javascript" src = "./logic.js"></script>
   <script type="text/javascript" src = "./dom.js"></script>
+  <script>
+var myNodelist = document.querySelectorAll("p");
+document.getElementById("demo").innerHTML =
+"The innerHTML of the second paragraph is: " +
+myNodelist[0].innerHTML;
+</script>
 </html>
