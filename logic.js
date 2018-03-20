@@ -45,6 +45,56 @@ var todoFunctions = {
       // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
       // sortFunction will have same signature as the sort function in array.sort
       // hint: array.slice, array.sort
+      console.log('assssssd');
+      
+      var todos=[
+        {
+          id: 0,
+          description: 'smash avocados',
+          done: true,
+          sortId :0,
+        },
+        {
+          id: 1,
+          description: 'make coffee',
+          done: false,
+          sortId :1,
+        },
+        {
+          id: 2,
+          description: 'smash avocados',
+          done: true,
+          sortId :0,
+        },
+      ];
+      const CloneArray=todoFunctions.cloneArrayOfObjects(todos);
+      // function for dynamic sorting
+function compareValues(key, order='asc') {
+  return function(a, b) {
+    if(!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+      // property doesn't exist on either object
+        return 0; 
+    }
+
+    const varA = (typeof a[key] === 'string') ? 
+      a[key].toUpperCase() : a[key];
+    const varB = (typeof b[key] === 'string') ? 
+      b[key].toUpperCase() : b[key];
+
+    let comparison = 0;
+    if (varA > varB) {
+      comparison = 1;
+    } else if (varA < varB) {
+      comparison = -1;
+    }
+    return (
+      (order == 'desc') ? (comparison * -1) : comparison
+    );
+  };
+}
+      CloneArray.sort(compareValues('sortId','desc')); 
+      return CloneArray;
+
     },
   };
   
