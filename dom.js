@@ -16,6 +16,7 @@
     var createTodoNode = function(todo) {
       var todoNode = document.createElement('li');
       // you will need to use addEventListener
+      //  todoNode.textContent =document.getElementById("description");
 
       // add span holding description
 
@@ -33,18 +34,17 @@
 
       return todoNode;
     };
-
     // bind create todo form
     if (addTodoForm) {
       addTodoForm.addEventListener('submit', function(event) {
         // https://developer.mozilla.org/en-US/docs/Web/Events/submit
         // what does event.preventDefault do?
         // what is inside event.target?
-    
-        var description = '?'; // event.target ....
-
+   event.preventDefault();
+        var description = document.getElementById("description").value; // event.target ....
+        //console.log(description,'ffffffffffff');
         // hint: todoFunctions.addTodo
-        var newState = []; // ?? change this!
+        var newState =todoFunctions.addTodo(state, description);
         update(newState);
       });
     }

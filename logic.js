@@ -26,18 +26,19 @@ var todoFunctions = {
     },
 
     addTodo: function(todos, newTodo) {
+      console.log(newTodo,'kkkkkkkkk');
       // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
       // returns a new array, it should contain todos with the newTodo added to the end.
       // add an id to the newTodo. You can use the generateId function to create an id.
       // hint: array.concat
-      if(newTodo.description.trim().length > 0)
+      if(newTodo.trim().length > 0)
       {
 
       var arr =  JSON.parse(JSON.stringify(todos));
       var obj = {id : todoFunctions.generateId(),
-                description:newTodo.description,
+                description:newTodo,
                 done: false,
-                sortId: 0}
+              sortId: 0};
       arr.push(obj);
     }
       return arr;
