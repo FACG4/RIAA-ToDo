@@ -2,6 +2,8 @@
 // you can access these on todo.todoFunctions
 // For part one we expect you to use tdd
 
+
+
 var todoFunctions = {
     // todoFunctions.generateId() will give you a unique id
     // You do not need to understand the implementation of this function.
@@ -28,6 +30,17 @@ var todoFunctions = {
       // returns a new array, it should contain todos with the newTodo added to the end.
       // add an id to the newTodo. You can use the generateId function to create an id.
       // hint: array.concat
+      if(newTodo.description.trim().length > 0)
+      {
+
+      var arr =  JSON.parse(JSON.stringify(todos));
+      var obj = {id : todoFunctions.generateId(),
+                description:newTodo.description,
+                done: false,
+                sortId: 0}
+      arr.push(obj);
+    }
+      return arr;
     },
     deleteTodo: function(todos, idToDelete) {
       // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
@@ -46,12 +59,79 @@ var todoFunctions = {
       // in the new todo array, all elements will remain unchanged except the one with id: idToMark
       // this element will have its done value toggled
       // hint: array.map
+      var todos2=todoFunctions.cloneArrayOfObjects(todos);
+      // for ( i = 0; i <  todos2.length; i++) {
+      //   if (todos2[i].id===idToMark) {
+      //     todos2[i].done = true;
+      //
+      //   }}
+      var newObject = todos2.map(function (key){
+          if(key.id == idToMark){
+
+            key.done = true;
+          }
+
+          return key ;
+});
+return newObject;
+
+
     },
     sortTodos: function(todos, sortFunction) {
       // stretch goal! Do this last
       // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
       // sortFunction will have same signature as the sort function in array.sort
       // hint: array.slice, array.sort
+      console.log('assssssd');
+
+      var todos=[
+        {
+          id: 0,
+          description: 'smash avocados',
+          done: true,
+          sortId :0,
+        },
+        {
+          id: 1,
+          description: 'make coffee',
+          done: false,
+          sortId :1,
+        },
+        {
+          id: 2,
+          description: 'smash avocados',
+          done: true,
+          sortId :0,
+        },
+      ];
+      const CloneArray=todoFunctions.cloneArrayOfObjects(todos);
+      // function for dynamic sorting
+function compareValues(key, order='asc') {
+  return function(a, b) {
+    if(!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+      // property doesn't exist on either object
+        return 0;
+    }
+
+    const varA = (typeof a[key] === 'string') ?
+      a[key].toUpperCase() : a[key];
+    const varB = (typeof b[key] === 'string') ?
+      b[key].toUpperCase() : b[key];
+
+    let comparison = 0;
+    if (varA > varB) {
+      comparison = 1;
+    } else if (varA < varB) {
+      comparison = -1;
+    }
+    return (
+      (order == 'desc') ? (comparison * -1) : comparison
+    );
+  };
+}
+      CloneArray.sort(compareValues('sortId','desc'));
+      return CloneArray;
+
     },
     editTodo: function(todos, idToEdit, newDescription) {
       // we are going to add something veruy cool an nice and great
@@ -64,8 +144,6 @@ var todoFunctions = {
       return copy_arr;
     }
   };
-
-
   // Why is this if statement necessary?
   // The answer has something to do with needing to run code both in the browser and in Node.js
   // See this article for more details:
