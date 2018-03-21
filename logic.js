@@ -31,12 +31,12 @@ var todoFunctions = {
       // returns a new array, it should contain todos with the newTodo added to the end.
       // add an id to the newTodo. You can use the generateId function to create an id.
       // hint: array.concat
-      if(newTodo.trim().length > 0)
+      if(newTodo.description.trim().length > 0)
       {
 
       var arr =  JSON.parse(JSON.stringify(todos));
       var obj = {id : todoFunctions.generateId(),
-                description:newTodo,
+                description:newTodo.description,
                 done: false,
               sortId: 0};
       arr.push(obj);
