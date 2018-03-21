@@ -15,11 +15,12 @@
     // This function takes a todo, it returns the DOM node representing that todo
     var createTodoNode = function(todo) {
       var todoNode = document.createElement('li');
-      // you will need to use addEventListener
-      //  todoNode.textContent =document.getElementById("description");
-
+      // you will need to use addEventListener????
+      //  todoNode.textContent =document.getElementById("description"); esraa
       // add span holding description
-
+      var span = document.createElement('span');
+      span.textContent = todo.description;
+      todoNode.appendChild(span);
       // this adds the delete button
       var deleteButtonNode = document.createElement('button');
       deleteButtonNode.addEventListener('click', function(event) {
@@ -27,38 +28,30 @@
         update(newState);
       });
       todoNode.appendChild(deleteButtonNode);
-
       // add markTodo button
-
       // add classes for css
-
       return todoNode;
     };
     // bind create todo form
     if (addTodoForm) {
       addTodoForm.addEventListener('submit', function(event) {
-        // https://developer.mozilla.org/en-US/docs/Web/Events/submit
-        // what does event.preventDefault do?
-        // what is inside event.target?
-   event.preventDefault();
-        var description = document.getElementById("description").value; // event.target ....
-        //console.log(description,'ffffffffffff');
-        // hint: todoFunctions.addTodo
+        event.preventDefault();
+        var description = {description: event.target.description.value};
+        // var description = document.getElementById("description").value; // event.target ....
         var newState =todoFunctions.addTodo(state, description);
         update(newState);
       });
     }
-
-    // you should not need to change this function
     var update = function(newState) {
       state = newState;
       renderState(state);
+      console.log(state);
     };
+
 
     // you do not need to change this function
     var renderState = function(state) {
       var todoListNode = document.createElement('ul');
-
       state.forEach(function(todo) {
         todoListNode.appendChild(createTodoNode(todo));
       });
