@@ -31,8 +31,20 @@
 
       // add classes for css
 
+      var markTodoButtonNode = document.createElement('button');
+      markTodoButtonNode.addEventListener('click', function(event) {
+        var newState = todoFunctions.markTodo(state, todo.id);
+        update(newState);
+      });
+      todoNode.appendChild(markTodoButtonNode);
+
+
       return todoNode;
-    };
+
+
+
+
+
 
     // bind create todo form
     if (addTodoForm) {
@@ -40,7 +52,7 @@
         // https://developer.mozilla.org/en-US/docs/Web/Events/submit
         // what does event.preventDefault do?
         // what is inside event.target?
-    
+
         var description = '?'; // event.target ....
 
         // hint: todoFunctions.addTodo
