@@ -4,7 +4,15 @@
   "description": "",
   "main": "dom.js",
   "scripts": {
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "test": "tape test.js | tap-spec"
+=======
+    "test": "echo \"Error: no test specified\" && exit 1"
+>>>>>>> e5b8dcab92afad2013766c1d0570d14434015efd
+=======
   "test": "tape ./test.js | tap-spec"
+>>>>>>> 350788923a2e3079d331ac761c2c496b348eb6f3
   },
   "repository": {
     "type": "git",
@@ -16,9 +24,19 @@
   "bugs": {
     "url": "https://github.com/FACG4/RIAA-ToDo/issues"
   },
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 350788923a2e3079d331ac761c2c496b348eb6f3
   "homepage": "https://github.com/FACG4/RIAA-ToDo#readme",
   "devDependencies": {
     "tap-spec": "^4.1.1",
     "tape": "^4.9.0"
   }
+<<<<<<< HEAD
+=======
+  "homepage": "https://github.com/FACG4/RIAA-ToDo#readme"
+>>>>>>> e5b8dcab92afad2013766c1d0570d14434015efd
+=======
+>>>>>>> 350788923a2e3079d331ac761c2c496b348eb6f3
 }
