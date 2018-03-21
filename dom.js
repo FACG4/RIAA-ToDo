@@ -16,7 +16,9 @@
     var createTodoNode = function(todo) {
       var todoNode = document.createElement('li');
       // you will need to use addEventListener
-
+      todNode.addEventListener('click', function() {
+        // var newState = todoFunctions.addTodo(state, )
+      });
       // add span holding description
 
       // this adds the delete button

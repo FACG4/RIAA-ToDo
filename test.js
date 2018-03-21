@@ -18,7 +18,7 @@ test('deleteTodo test', function(t) {
   id: 0,
   description: 'smash avocados',
   done: true,
-}], 'a;ldskfja;lskdj' );
+}], 'should return the first object only' );
   t.end();
 });
 
@@ -45,7 +45,7 @@ test('editTodo test', function(t) {
   id: 1,
   description: 'make tea',
   done: false,
-}], 'a;ldskfja;lskdj' );
+}], 'should change the second object description to "make tea"' );
   t.end();
 });
 
