@@ -69,7 +69,7 @@ var todoFunctions = {
       var newObject = todos2.map(function (key){
           if(key.id == idToMark){
 
-            key.done = true;
+            key.done = !key.done;
           }
 
           return key ;

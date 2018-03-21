@@ -56,7 +56,7 @@ var expect =[{id:0,done:true},{id:1,done:false}];
 t.deepEqual(actual, expect , 'should equal');
 t.end();
 
-})
+});
 
 //addTodo
 test('AddToDoTest', function(t) {
