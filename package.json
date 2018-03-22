@@ -4,12 +4,13 @@
   "description": "",
   "main": "dom.js",
   "scripts": {
-  "test": "tape test.js | tap-spec"
+    "test": "tape test.js | tap-spec"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FACG4/RIAA-ToDo.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -21,5 +22,4 @@
     "tape": "^4.9.0"
   },
   "dependencies": {}
-
 }
