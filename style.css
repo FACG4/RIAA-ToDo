@@ -110,7 +110,7 @@ button, input[type='checkbox'] {
 .delete:hover {
     background-color: #4CAF50; /* Green */
     color: white;
-
+}
     .done {
       text-decoration: line-through;
     }
