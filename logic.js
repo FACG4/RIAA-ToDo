@@ -9,7 +9,12 @@ var todoFunctions = {
     // You do not need to understand the implementation of this function.
     generateId: (function() {
       var state = JSON.parse(localStorage.getItem('state'));
-      var idCounter = state? state.length : 0 ;   //ternary operator!
+      
+      var indexOflast=state? (state.length-1):0;
+      
+      console.log(typeof(indexOflast) );
+      
+      var idCounter = state? indexOflast : 0 ;   //ternary operator!
 
       function incrementCounter() {
         return (idCounter += 1);
@@ -37,7 +42,6 @@ var todoFunctions = {
       var arr =  JSON.parse(JSON.stringify(todos));
       newTodo.id = todoFunctions.generateId();
       newTodo.done = false,
-      // newTodo.sortId = 0;
       arr.push(newTodo);
       }
       return arr;
@@ -78,31 +82,13 @@ var todoFunctions = {
       return newObject;
     },
 
-    sortTodos: function(todos, sortFunction) {
+    sortTodos: function(todos) {
       // stretch goal! Do this last
       // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
       // sortFunction will have same signature as the sort function in array.sort
       // hint: array.slice, array.sort
-      var todos=[
-        {
-          id: 0,
-          description: 'smash avocados',
-          done: true,
-          sortId :0,
-        },
-        {
-          id: 1,
-          description: 'make coffee',
-          done: false,
-          sortId :1,
-        },
-        {
-          id: 2,
-          description: 'smash avocados',
-          done: true,
-          sortId :0,
-        },
-      ];
+
+     
       const CloneArray=todoFunctions.cloneArrayOfObjects(todos);
       // function for dynamic sorting
 function compareValues(key, order='asc') {

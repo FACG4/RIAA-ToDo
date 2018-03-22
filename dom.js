@@ -5,17 +5,19 @@
     // This is the dom node where we will keep our todo
     var container = document.getElementById('todo-container');
     var addTodoForm = document.getElementById('add-todo');
+    var sortId = document.getElementById('sortId');
+    var proirty = document.getElementById('proirty');
+
 
     var state = []; // this is our initial todoList
-
-    if (localStorage.getItem("state")  === null) {
+    proirty.addEventListener('change',function(){
+      proirty.value == 0 ?  proirty.value=1: proirty.value=0;
+      update(state);
+    })
+    if (localStorage.getItem("state")) {
           // Code for localStorage/sessionStorage.
-          state = [];
-    } else{
-      state = JSON.parse(localStorage.getItem("state"))
-
+          state = JSON.parse(localStorage.getItem("state"))
     }
-
     // This function takes a todo, it returns the DOM node representing that todo
     var createTodoNode = function(todo) {
       var todoNode = document.createElement('li');
@@ -61,19 +63,28 @@
     };
 
     // bind create todo form
+
     if (addTodoForm ) {
+        sortId.addEventListener('change',function(){
+        sortId.value == 0 ?  sortId.value=1: sortId.value=0;
+      });
       addTodoForm.addEventListener('submit', function(event) {
         event.preventDefault();
         var description = {description: event.target.description.value};
+        description.sortId=sortId.value;
         event.target.description.value = '';
-        var newState =todoFunctions.addTodo(state, description);
-        document.getElementById("description").value = "";
-          //event.target.description.value ="";
+        event.target.sortId.checked = false;
+        event.target.sortId.value = 0;
+        var newState =todoFunctions.addTodo(state, description);        
         update(newState);
       });
-  }
+  
+}
     var update = function(newState) {
       state = newState;
+      if(proirty.value == 1){        
+        state= todoFunctions.sortTodos(state);
+      }
       renderState(state);
       localStorage.setItem('state', JSON.stringify(state));
 
