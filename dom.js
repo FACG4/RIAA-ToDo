@@ -80,10 +80,7 @@
     }
     var update = function(newState) {
       state = newState;
-      console.log(proirty.value);
-      if(proirty.value == 1){
-        console.log('dada');
-        
+      if(proirty.value == 1){        
         state= todoFunctions.sortTodos(state);
       }
       renderState(state);
