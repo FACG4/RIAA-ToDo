@@ -5,7 +5,6 @@
     // This is the dom node where we will keep our todo
     var container = document.getElementById('todo-container');
     var addTodoForm = document.getElementById('add-todo');
-
     var state = [
       { id: -3, description: 'first todo' },
       { id: -2, description: 'second todo' },
@@ -15,7 +14,7 @@
     // This function takes a todo, it returns the DOM node representing that todo
     var createTodoNode = function(todo) {
       var todoNode = document.createElement('li');
-      // you will need to use addEventListener????
+      // you will need to use addasEventListener????
       //  todoNode.textContent =document.getElementById("description"); esraa
       // add span holding description
       var span = document.createElement('span');
@@ -30,25 +29,28 @@
       todoNode.appendChild(deleteButtonNode);
       // add markTodo button
       // add classes for css
+      deleteButtonNode.className="delete";
+      deleteButtonNode.innerHTML = 'Delete';
+      //deleteButtonNode.value="Delete";
       return todoNode;
     };
     // bind create todo form
-    if (addTodoForm) {
+    if (addTodoForm ) {
       addTodoForm.addEventListener('submit', function(event) {
         event.preventDefault();
         var description = {description: event.target.description.value};
-        // var description = document.getElementById("description").value; // event.target ....
+      //var description = document.getElementById("description").value; // event.target ....
         var newState =todoFunctions.addTodo(state, description);
+        document.getElementById("description").value = "";
+          //event.target.description.value ="";
         update(newState);
       });
-    }
+  }
     var update = function(newState) {
       state = newState;
       renderState(state);
-      console.log(state);
+    //  console.log(state);
     };
-
-
     // you do not need to change this function
     var renderState = function(state) {
       var todoListNode = document.createElement('ul');
@@ -59,6 +61,5 @@
       // you may want to add a class for css
       container.replaceChild(todoListNode, container.firstChild);
     };
-
     if (container) renderState(state);
   })();
