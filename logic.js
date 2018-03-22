@@ -32,7 +32,7 @@ var todoFunctions = {
       // hint: array.concat
       if(newTodo.description.trim().length > 0)
       {
-
+      
       var arr =  JSON.parse(JSON.stringify(todos));
       var obj = {id : todoFunctions.generateId(),
                 description:newTodo.description,
@@ -58,36 +58,35 @@ var todoFunctions = {
       // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
       // sortFunction will have same signature as the sort function in array.sort
       // hint: array.slice, array.sort
-      console.log('assssssd');
       
-      var todos=[
-        {
-          id: 0,
-          description: 'smash avocados',
-          done: true,
-          sortId :0,
-        },
-        {
-          id: 1,
-          description: 'make coffee',
-          done: false,
-          sortId :1,
-        },
-        {
-          id: 2,
-          description: 'smash avocados',
-          done: true,
-          sortId :0,
-        },
-      ];
+      // var todos=[
+      //   {
+      //     id: 0,
+      //     description: 'smash avocados',
+      //     done: true,
+      //     sortId :0,
+      //   },
+      //   {
+      //     id: 1,
+      //     description: 'make coffee',
+      //     done: false,
+      //     sortId :1,
+      //   },
+      //   {
+      //     id: 2,
+      //     description: 'smash avocados',
+      //     done: true,
+      //     sortId :0,
+      //   },
+      // ];
       const CloneArray=todoFunctions.cloneArrayOfObjects(todos);
       // function for dynamic sorting
-function compareValues(key, order='asc') {
-  return function(a, b) {
-    if(!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-      // property doesn't exist on either object
+  function compareValues(key, order='asc') {
+        return function(a, b) {
+        if(!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+         // property doesn't exist on either object
         return 0; 
-    }
+      }
 
     const varA = (typeof a[key] === 'string') ? 
       a[key].toUpperCase() : a[key];
