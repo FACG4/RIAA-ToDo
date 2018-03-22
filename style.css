@@ -99,10 +99,22 @@ button, input[type='checkbox'] {
     color: red;
     width: 50px;
 }
-.done {
-  text-decoration: line-through;
+.delete {
+  /*value: "Delete";*/
+  border-radius: 12px;
+  background-color: white;
+   color: black;
+   border: 2px solid #4CAF50;
+   margin:5px;
 }
-.fa, .fa-lg {
-  font-size: 25px;
-  color: rgb(249, 139, 116);
-}
+.delete:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+
+    .done {
+      text-decoration: line-through;
+    }
+    .fa, .fa-lg {
+      font-size: 25px;
+      color: rgb(249, 139, 116);
+    }

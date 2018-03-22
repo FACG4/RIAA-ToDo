@@ -1,24 +1,27 @@
 var test = require('tape');
-var logic = require('./logic');
-
+var logic = require('./logic.js');
 //deleteTodo
 test('deleteTodo test', function(t) {
-  t.deepEqual(logic.deleteTodo([
+  var actual = logic.deleteTodo([
   {
     id: 0,
     description: 'smash avocados',
     done: true,
-  },
-  {
+  },{
     id: 1,
     description: 'make coffee',
     done: false,
-  },
-],1),[{
+  }],1)
+  var expected =[{
   id: 0,
   description: 'smash avocados',
   done: true,
+<<<<<<< HEAD
+}]
+  t.deepEqual(actual,expected, 'Massage should be readble' );
+=======
 }], 'should return the first object only' );
+>>>>>>> aeacca5ceb0a98468b9b16c9f3f01234af6866e4
   t.end();
 });
 
@@ -60,14 +63,12 @@ t.end();
 
 //addTodo
 test('AddToDoTest', function(t) {
-
-var todoFunctions = require('./logic.js');
 var todos = [];
 var newTodo = { description: 'make smoothie out of things that should really be cooked' };
 var exp=[{id: 1 ,description: "make smoothie out of things that should really be cooked",
  done: false, sortId:0}]
 
-  t.deepEqual(todoFunctions.addTodo(todos, newTodo),exp,"it should return make smothie");
+  t.deepEqual(logic.addTodo(todos, newTodo),exp,"it should return make smothie");
   t.end();
 });
 

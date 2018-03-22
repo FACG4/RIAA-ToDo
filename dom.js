@@ -43,7 +43,7 @@
       todoNode.appendChild(span);
       deleteButtonNode.appendChild(icon);
       todoNode.appendChild(deleteButtonNode);
-      
+
       // fantastic edit feature
       var tempInput = document.createElement('input');
       tempInput.setAttribute('autofocus', 'true');
@@ -51,7 +51,7 @@
           tempInput.value = e.target.textContent;
           todoNode.replaceChild(tempInput, span);
         });
-        tempInput.addEventListener('keypress', (e) => {        
+        tempInput.addEventListener('keypress', (e) => {
           if (e.key == 'Enter') {
             const newState = todoFunctions.editTodo(state, todo.id, tempInput.value);
             update(newState);
@@ -61,15 +61,17 @@
     };
 
     // bind create todo form
-    if (addTodoForm) {
+    if (addTodoForm ) {
       addTodoForm.addEventListener('submit', function(event) {
         event.preventDefault();
         var description = {description: event.target.description.value};
         event.target.description.value = '';
         var newState =todoFunctions.addTodo(state, description);
+        document.getElementById("description").value = "";
+          //event.target.description.value ="";
         update(newState);
       });
-    }
+  }
     var update = function(newState) {
       state = newState;
       renderState(state);
@@ -87,7 +89,6 @@
       // you may want to add a class for css
       container.replaceChild(todoListNode, container.firstElementChild);
     };
-
     if (container) renderState(state);
-        
+
   })();
