@@ -1,3 +1,84 @@
+
+body {
+  margin-top: 110px;
+  background-image: url("image1.jpg");
+      background-color: #cccccc;
+      background-size: 1300px;
+  display: flex;
+  justify-content: center;
+
+  flex-direction: column;
+  font-family: 'Lobster', cursive;
+}
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li {
+  display: flex;
+  justify-content: center;
+    background: #ffe5e5;
+    padding: 5px;
+    padding-right: 200px;
+    padding-left: 200px;
+
+
+   margin: 5px;
+
+}
+#todo-container {
+  display: flex;
+  justify-content: center;
+}
+ #add-todo{
+   display: flex;
+   justify-content: center;
+   background-color: rgba(194, 1, 88, 0.54);
+   padding: 10px;
+   margin-left:300px;
+   margin-right: 300px;
+   margin-bottom: 20px;
+}
+.submit  {
+  padding: 15px 25px;
+  font-size: 17px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: rgb(249, 139, 116);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px rgb(200, 100, 100);
+}
+.submit:hover {background-color: #3e8e41}
+.submit:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+span {
+font-size: 30px;
+}
+button{
+padding: 20px;
+margin-left: 40px;
+margin-right: 10px;
+padding-top: 20px;
+}
+.checked {
+    background-color: black;
+    height: 50px;
+    color: red;
+    width: 50px;
+}
 .delete {
   /*value: "Delete";*/
   border-radius: 12px;
@@ -9,4 +90,3 @@
 .delete:hover {
     background-color: #4CAF50; /* Green */
     color: white;
-}
