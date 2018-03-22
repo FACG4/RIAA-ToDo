@@ -1,0 +1,108 @@
+body {
+  margin-top: 110px;
+  background-image: url("image1.jpg");
+      background-color: #cccccc;
+      background-size: 1300px;
+  display: flex;
+  justify-content: center;
+
+  flex-direction: column;
+  font-family: 'Lobster', cursive;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 500px;
+}
+
+li {
+  /* display: flex;
+  justify-content: center; */
+  background: #ffe5e5;
+  margin-bottom: 8px;
+}
+li:last-child {
+  margin-bottom: 0;
+}
+
+span {
+  font-size: 30px;
+}
+
+button{
+  background: transparent;
+  border: none;
+  margin-left: 40px;
+  margin-right: 10px;
+  float: right;
+}
+
+button, input[type='checkbox'] {
+    height: 25px;
+    width: 25px;
+    margin-top: 13px;
+}
+#todo-container {
+  display: flex;
+  justify-content: center;
+}
+ #add-todo{
+  width: 500px;
+  border-radius: 10px;
+  /* display: flex;
+  justify-content: center; */
+  background-color: rgba(194, 1, 88, 0.54);
+  padding: 7px;
+  margin: 0 auto;
+  margin-bottom: 35px;
+}
+
+#description {
+    height: 35px;
+    width: 76%;
+    border-radius: 10px;
+    float: left;
+    margin-left: 3px;
+}
+.submit  {
+  float: right;
+  height: 39px;
+  width: 20%;
+  /* padding: 15px 25px; */
+  font-size: 17px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: rgb(249, 139, 116);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px rgb(200, 100, 100);
+}
+.submit:hover {background-color: #3e8e41}
+.submit:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.checked {
+    background-color: black;
+    height: 50px;
+    color: red;
+    width: 50px;
+}
+.done {
+  text-decoration: line-through;
+}
+.fa, .fa-lg {
+  font-size: 25px;
+  color: rgb(249, 139, 116);
+}
