@@ -16,8 +16,12 @@ test('deleteTodo test', function(t) {
   id: 0,
   description: 'smash avocados',
   done: true,
+<<<<<<< HEAD
 }]
   t.deepEqual(actual,expected, 'Massage should be readble' );
+=======
+}], 'should return the first object only' );
+>>>>>>> aeacca5ceb0a98468b9b16c9f3f01234af6866e4
   t.end();
 });
 
@@ -44,7 +48,7 @@ test('editTodo test', function(t) {
   id: 1,
   description: 'make tea',
   done: false,
-}], 'a;ldskfja;lskdj' );
+}], 'should change the second object description to "make tea"' );
   t.end();
 });
 
