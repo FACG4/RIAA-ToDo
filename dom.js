@@ -5,36 +5,59 @@
     // This is the dom node where we will keep our todo
     var container = document.getElementById('todo-container');
     var addTodoForm = document.getElementById('add-todo');
-    var ulList;
 
-    var state = [
-      { id: -3, description: 'first todo' },
-      { id: -2, description: 'second todo' },
-      { id: -1, description: 'third todo' },
-    ]; // this is our initial todoList
+    var state = []; // this is our initial todoList
+
+    if (localStorage.getItem("state")  === null) {
+          // Code for localStorage/sessionStorage.
+          state = [];
+    } else{
+      state = JSON.parse(localStorage.getItem("state"))
+
+    }
 
     // This function takes a todo, it returns the DOM node representing that todo
     var createTodoNode = function(todo) {
       var todoNode = document.createElement('li');
-      todoNode.setAttribute('id', todo.id);
-  
-      // you will need to use addEventListener
-      // add span holding description
       var span = document.createElement('span');
-      span.textContent = todo.description;
-      todoNode.appendChild(span);
-      // this adds the delete button
+      var icon = document.createElement('i');
+      icon.className = 'fa fa-lg fa-trash';
       var deleteButtonNode = document.createElement('button');
+      span.textContent = todo.description;
       deleteButtonNode.addEventListener('click', function(event) {
         var newState = todoFunctions.deleteTodo(state, todo.id);
         update(newState);
       });
+      var markTodoButtonNode = document.createElement('input');
+      markTodoButtonNode.setAttribute('type', 'checkbox');
+      if(todo.done){
+        markTodoButtonNode.setAttribute('checked',"checked");
+        todoNode.classList.add('done');
+        markTodoButtonNode.classList.add('checked');
+      }
+      markTodoButtonNode.addEventListener('change', function(event) {
+        var newState = todoFunctions.markTodo(state, todo.id);
+        update(newState);
+      });
+      todoNode.appendChild(markTodoButtonNode);
+      todoNode.appendChild(span);
+      deleteButtonNode.appendChild(icon);
       todoNode.appendChild(deleteButtonNode);
       
-      // add markTodo button
-      // add classes for css
-      
-      return todoNode;
+      // fantastic edit feature
+      var tempInput = document.createElement('input');
+      tempInput.setAttribute('autofocus', 'true');
+      span.addEventListener('click', (e) => {
+          tempInput.value = e.target.textContent;
+          todoNode.replaceChild(tempInput, span);
+        });
+        tempInput.addEventListener('keypress', (e) => {        
+          if (e.key == 'Enter') {
+            const newState = todoFunctions.editTodo(state, todo.id, tempInput.value);
+            update(newState);
+          }
+        });
+    return todoNode;
     };
 
     // bind create todo form
@@ -42,7 +65,7 @@
       addTodoForm.addEventListener('submit', function(event) {
         event.preventDefault();
         var description = {description: event.target.description.value};
-        // var description = document.getElementById("description").value; // event.target ....
+        event.target.description.value = '';
         var newState =todoFunctions.addTodo(state, description);
         update(newState);
       });
@@ -50,7 +73,8 @@
     var update = function(newState) {
       state = newState;
       renderState(state);
-      console.log('updated', state);      
+      localStorage.setItem('state', JSON.stringify(state));
+
     };
 
     // you do not need to change this function
@@ -62,37 +86,8 @@
 
       // you may want to add a class for css
       container.replaceChild(todoListNode, container.firstElementChild);
-      ulList = document.querySelector('ul');
     };
 
     if (container) renderState(state);
-    
-    
-
-  // add editTodo Listener
-  var targetSpan;
-  var targetedSpanParent;
-  var tempInput;
-
-  ulList.addEventListener('click', function (e) {
-    if (e.target.tagName.toLowerCase() == 'span') {
-      targetSpan = e.target;
-      targetedSpanParent = e.target.parentNode;
-      tempInput = document.createElement('input');
-      tempInput.value = e.target.textContent
-      targetedSpanParent.replaceChild(tempInput, e.target);
-    }
-  });
-  ulList.addEventListener('keypress', function (e) {
-    if (e.key == 'Enter') {
-      var newspan = document.createElement('span');
-      newspan.textContent = tempInput.value;
-      var newState1 = todoFunctions.editTodo(state, parseInt(targetedSpanParent.getAttribute('id')), tempInput.value);
-      update(newState1);
-      targetedSpanParent.replaceChild(newspan, tempInput);
-
-    }
-  });
-
-    
+        
   })();

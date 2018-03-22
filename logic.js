@@ -8,7 +8,8 @@ var todoFunctions = {
     // todoFunctions.generateId() will give you a unique id
     // You do not need to understand the implementation of this function.
     generateId: (function() {
-      var idCounter = 0;
+      var state = JSON.parse(localStorage.getItem('state'));
+      var idCounter = state? state.length : 0 ;   //ternary operator!
 
       function incrementCounter() {
         return (idCounter += 1);
@@ -34,11 +35,10 @@ var todoFunctions = {
       if(newTodo.description.trim().length > 0)
       {
       var arr =  JSON.parse(JSON.stringify(todos));
-      var obj = {id : todoFunctions.generateId(),
-                description:newTodo.description,
-                done: false,
-              sortId: 0};
-      arr.push(obj);
+      newTodo.id = todoFunctions.generateId();
+      newTodo.done = false,
+      // newTodo.sortId = 0;
+      arr.push(newTodo);
       }
       return arr;
     },
@@ -71,7 +71,7 @@ var todoFunctions = {
       var newObject = todos2.map(function (key){
           if(key.id == idToMark){
 
-            key.done = true;
+            key.done = !key.done;
           }
           return key ;
       });
